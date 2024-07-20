@@ -99,6 +99,14 @@
           {:else if item.type === "container"}
             <div class="topbar__dropdown">
               <span class="dropbtn">{item.defaultName}</span>
+              {#if item.iconLink}
+                <img
+                  class="topbar__icon"
+                  src={item.iconLink}
+                  alt={item.defaultName}
+                  loading="eager"
+                />
+              {/if}
               <div class="topbar__dropdown-content">
                 {#each item.objects as subItem}
                   <a href={subItem.link} class="topbar__dropdown-link">
@@ -119,40 +127,32 @@
         {/each}
       </div>
       <div class="topbar__fixed-items">
-        {#each $fixedTopbarItems.objects as item}
-          {#if item.type === "link"}
-            <a href={item.link} class="topbar__link">
-              {#if item.iconLink}
-                <img
-                  class="topbar__icon"
-                  src={item.iconLink}
-                  alt={item.defaultName}
-                  loading="eager"
-                />
-              {/if}
-              {item.defaultName}
-            </a>
-          {:else if item.type === "container"}
-            <div class="topbar__dropdown">
-              <span class="dropbtn">{item.defaultName}</span>
-              <div class="topbar__dropdown-content--right">
-                {#each item.objects as subItem}
-                  <a href={subItem.link} class="topbar__dropdown-link">
-                    {#if subItem.iconLink}
-                      <img
-                        class="topbar__icon"
-                        src={subItem.iconLink}
-                        alt={subItem.defaultName}
-                        loading="eager"
-                      />
-                    {/if}
-                    {subItem.defaultName}
-                  </a>
-                {/each}
-              </div>
-            </div>
+        <div class="topbar__dropdown">
+          {#if $fixedTopbarItems.iconLink}
+            <img
+              class="topbar__icon"
+              src={$fixedTopbarItems.iconLink}
+              alt={$fixedTopbarItems.defaultName}
+              loading="eager"
+            />
           {/if}
-        {/each}
+          <span class="dropbtn">{$fixedTopbarItems.defaultName}</span>
+          <div class="topbar__dropdown-content--right">
+            {#each $fixedTopbarItems.objects as subItem}
+              <a href={subItem.link} class="topbar__dropdown-link">
+                {#if subItem.iconLink}
+                  <img
+                    class="topbar__icon"
+                    src={subItem.iconLink}
+                    alt={subItem.defaultName}
+                    loading="eager"
+                  />
+                {/if}
+                {subItem.defaultName}
+              </a>
+            {/each}
+          </div>
+        </div>
       </div>
     {:else}
       <button class="hamburger" on:click={toggleCustomMenu} role="button">
@@ -185,6 +185,13 @@
         {:else if item.type === "container"}
           <div class="topbar-section--mobile">
             <hr class="topbar-separator--mobile" />
+            {#if item.iconLink}
+              <img
+                class="topbar__icon--mobile"
+                src={item.iconLink}
+                alt={item.defaultName}
+              />
+            {/if}
             <span class="dropbtn--mobile">{item.defaultName}</span>
             <div class="topbar__dropdown-content--mobile">
               {#each item.objects as subItem}
@@ -207,38 +214,33 @@
   {/if}
   {#if $isFixedMenuExpanded}
     <div transition:slide class="hamburger-menu-container">
-      {#each $fixedTopbarItems.objects as item}
-        {#if item.type === "link"}
-          <a href={item.link} class="topbar__link--mobile">
-            {#if item.iconLink}
-              <img
-                class="topbar__icon--mobile"
-                src={item.iconLink}
-                alt={item.defaultName}
-              />
-            {/if}
-            {item.defaultName || ""}
-          </a>
-        {:else if item.type === "container"}
-          <div class="topbar-section--mobile">
-            <span class="dropbtn--mobile">{item.defaultName}</span>
-            <div class="topbar__dropdown-content--mobile">
-              {#each item.objects as subItem}
-                <a href={subItem.link} class="topbar-section-link--mobile">
-                  {#if subItem.iconLink}
-                    <img
-                      class="topbar__icon--mobile"
-                      src={subItem.iconLink}
-                      alt={subItem.defaultName}
-                    />
-                  {/if}
-                  {item.defaultName || ""}
-                </a>
-              {/each}
-            </div>
-          </div>
-        {/if}
-      {/each}
+      <div class="topbar-section--mobile">
+        <div class="topbar-section-container--mobile">
+          {#if $fixedTopbarItems.iconLink}
+            <img
+              class="topbar__icon--mobile"
+              src={$fixedTopbarItems.iconLink}
+              alt={$fixedTopbarItems.defaultName}
+            />
+          {/if}
+          <span class="dropbtn--mobile">{$fixedTopbarItems.defaultName}</span>
+        </div>
+
+        <div class="topbar__dropdown-content--mobile">
+          {#each $fixedTopbarItems.objects as subItem}
+            <a href={subItem.link} class="topbar-section-link--mobile">
+              {#if subItem.iconLink}
+                <img
+                  class="topbar__icon--mobile"
+                  src={subItem.iconLink}
+                  alt={subItem.defaultName}
+                />
+              {/if}
+              {subItem.defaultName || ""}
+            </a>
+          {/each}
+        </div>
+      </div>
     </div>
   {/if}
 {/if}
