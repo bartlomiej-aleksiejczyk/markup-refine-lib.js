@@ -14,7 +14,7 @@
       "type": "link"
     },
     {
-      "defaultName": "Settings",
+      "defaultName": "Custom Settings",
       "type": "container",
       "id": "settings",
       "objects": [
@@ -33,7 +33,7 @@
         },
         {
           "link": "https://mysite.invalid/privacy/",
-          "defaultName": "Privacy",
+          "defaultName": "GDPR",
           "id": "privacy",
           "type": "link"
         }

@@ -11,8 +11,7 @@
   //TODO: Add icon picker component
   //TODO: Refine wrapper transition
   //TODO: Rename component and input
-  //TODO: Fix eslint
-  import { customScale } from "./customScale";
+  //TODO: Gracefull handling of wrong data
 
   export let data;
 
@@ -104,7 +103,7 @@
               {item.defaultName || ""}
             </a>
           {:else if item.type === "container"}
-            <div class="topbar__dropdown">
+            <div class="topbar__dropdown" data-testid="customItemsContainer">
               <span class="dropbtn">{item.defaultName}</span>
               {#if item.iconLink}
                 <img
@@ -125,7 +124,7 @@
                         loading="eager"
                       />
                     {/if}
-                    {item.defaultName || ""}
+                    {subItem.defaultName || ""}
                   </a>
                 {/each}
               </div>
@@ -162,14 +161,18 @@
         </div>
       </div>
     {:else}
-      <button class="hamburger" on:click={toggleCustomMenu} role="button">
+      <button
+        class="hamburger"
+        data-testid="customItemsButtonMobile"
+        aria-label="Close"
+        on:click={toggleCustomMenu}
+      >
         <Menu class="topbar__icon--mobile" color="#fff" />
       </button>
       <button
         class="hamburger"
+        data-testid="fixedItemsButtonMobile"
         on:click={toggleFixedMenu}
-        role="button"
-        tabindex="0"
       >
         <User class="topbar__icon--mobile" color="#fff" />
       </button>
