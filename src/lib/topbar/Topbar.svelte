@@ -6,6 +6,13 @@
   import { validateTopbarItems } from "./validateTopbarItems";
   import { slide } from "svelte/transition";
   import { getFixedItems } from "./getFixedItems";
+  import { User, Menu } from "lucide-svelte";
+  //TODO: Extract smaller components ?separate render and logic?
+  //TODO: Add icon picker component
+  //TODO: Refine wrapper transition
+  //TODO: Rename component and input
+  //TODO: Fix eslint
+  import { customScale } from "./customScale";
 
   export let data;
 
@@ -156,7 +163,7 @@
       </div>
     {:else}
       <button class="hamburger" on:click={toggleCustomMenu} role="button">
-        &#9776;
+        <Menu class="topbar__icon--mobile" color="#fff" />
       </button>
       <button
         class="hamburger"
@@ -164,85 +171,87 @@
         role="button"
         tabindex="0"
       >
-        &#9776;
+        <User class="topbar__icon--mobile" color="#fff" />
       </button>
     {/if}
   </div>
-  {#if $isCustomMenuExpanded}
-    <div transition:slide class="hamburger-menu-container">
-      {#each $topbarItems as item}
-        {#if item.type === "link"}
-          <a href={item.link} class="topbar__link--mobile">
-            {#if item.iconLink}
-              <img
-                class="topbar__icon--mobile"
-                src={item.iconLink}
-                alt={item.defaultName}
-              />
-            {/if}
-            {item.defaultName || ""}
-          </a>
-        {:else if item.type === "container"}
-          <div class="topbar-section--mobile">
-            <hr class="topbar-separator--mobile" />
-            {#if item.iconLink}
-              <img
-                class="topbar__icon--mobile"
-                src={item.iconLink}
-                alt={item.defaultName}
-              />
-            {/if}
-            <span class="dropbtn--mobile">{item.defaultName}</span>
-            <div class="topbar__dropdown-content--mobile">
-              {#each item.objects as subItem}
-                <a href={subItem.link} class="topbar-section-link--mobile">
-                  {#if subItem.iconLink}
-                    <img
-                      class="topbar__icon--mobile"
-                      src={subItem.iconLink}
-                      alt={subItem.defaultName}
-                    />
-                  {/if}
-                  {item.defaultName || ""}
-                </a>
-              {/each}
-            </div>
-          </div>
-        {/if}
-      {/each}
-    </div>
-  {/if}
-  {#if $isFixedMenuExpanded}
-    <div transition:slide class="hamburger-menu-container">
-      <div class="topbar-section--mobile">
-        <div class="topbar-section-container--mobile">
-          {#if $fixedTopbarItems.iconLink}
-            <img
-              class="topbar__icon--mobile"
-              src={$fixedTopbarItems.iconLink}
-              alt={$fixedTopbarItems.defaultName}
-            />
-          {/if}
-          <span class="dropbtn--mobile">{$fixedTopbarItems.defaultName}</span>
-        </div>
-
-        <div class="topbar__dropdown-content--mobile">
-          {#each $fixedTopbarItems.objects as subItem}
-            <a href={subItem.link} class="topbar-section-link--mobile">
-              {#if subItem.iconLink}
+  <div class="hamburger-menu-wrapper">
+    {#if $isCustomMenuExpanded}
+      <div transition:slide class="hamburger-menu-container">
+        {#each $topbarItems as item}
+          {#if item.type === "link"}
+            <a href={item.link} class="topbar__link--mobile">
+              {#if item.iconLink}
                 <img
                   class="topbar__icon--mobile"
-                  src={subItem.iconLink}
-                  alt={subItem.defaultName}
+                  src={item.iconLink}
+                  alt={item.defaultName}
                 />
               {/if}
-              {subItem.defaultName || ""}
+              {item.defaultName || ""}
             </a>
-          {/each}
+          {:else if item.type === "container"}
+            <div class="topbar-section--mobile">
+              <hr class="topbar-separator--mobile" />
+              {#if item.iconLink}
+                <img
+                  class="topbar__icon--mobile"
+                  src={item.iconLink}
+                  alt={item.defaultName}
+                />
+              {/if}
+              <span class="dropbtn--mobile">{item.defaultName}</span>
+              <div class="topbar__dropdown-content--mobile">
+                {#each item.objects as subItem}
+                  <a href={subItem.link} class="topbar-section-link--mobile">
+                    {#if subItem.iconLink}
+                      <img
+                        class="topbar__icon--mobile"
+                        src={subItem.iconLink}
+                        alt={subItem.defaultName}
+                      />
+                    {/if}
+                    {item.defaultName || ""}
+                  </a>
+                {/each}
+              </div>
+            </div>
+          {/if}
+        {/each}
+      </div>
+    {/if}
+    {#if $isFixedMenuExpanded}
+      <div class="hamburger-menu-container" transition:slide>
+        <div class="topbar-section--mobile">
+          <div class="topbar-section-container--mobile">
+            {#if $fixedTopbarItems.iconLink}
+              <img
+                class="topbar__icon--mobile"
+                src={$fixedTopbarItems.iconLink}
+                alt={$fixedTopbarItems.defaultName}
+              />
+            {/if}
+            <span class="dropbtn--mobile">{$fixedTopbarItems.defaultName}</span>
+          </div>
+
+          <div class="topbar__dropdown-content--mobile">
+            {#each $fixedTopbarItems.objects as subItem}
+              <a href={subItem.link} class="topbar-section-link--mobile">
+                {#if subItem.iconLink}
+                  <img
+                    class="topbar__icon--mobile"
+                    src={subItem.iconLink}
+                    alt={subItem.defaultName}
+                  />
+                {/if}
+                {subItem.defaultName || ""}
+              </a>
+            {/each}
+          </div>
         </div>
       </div>
-    </div>
-  {/if}
+    {/if}
+  </div>
 {/if}
 
 <style>

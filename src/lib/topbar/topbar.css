@@ -129,9 +129,11 @@
 
 /* mobile */
 .hamburger {
-  display: block;
+  display: flex;
+  align-items: center;
   font-size: 1.5rem;
   padding: 0 1rem;
+  text-align: center;
   cursor: pointer;
   background: none;
   border: none;
@@ -206,6 +208,18 @@
   gap: 0.5rem;
   padding: 0.2rem 1rem;
   width: 100%;
+  /* position: absolute; */
   align-items: center;
   display: flex;
+}
+
+.hamburger-menu-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background-color: var(--color-primary-lighter);
+}
+
+* {
+  outline: 1px red dashed;
 }
