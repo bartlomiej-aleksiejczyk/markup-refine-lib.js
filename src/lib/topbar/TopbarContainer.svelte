@@ -8,6 +8,7 @@
   //TODO: POST logout
   //TODO: Handle loading/processing js/ empty state gracefully/skeleton/loaders/sth
   //TODO: Add translation
+  //TODO: Handle no item fixed or custom items conditions
 
   import { afterUpdate, onMount } from "svelte";
   import { writable } from "svelte/store";
