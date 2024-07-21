@@ -1,5 +1,4 @@
 export const getFixedItems = (data) => {
-  if (data.fixedContent?.disableSettings) return {};
   let fixedItems = {
     defaultName: "User",
     type: "container",

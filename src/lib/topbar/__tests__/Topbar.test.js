@@ -29,7 +29,6 @@ describe("Topbar Component E2E", () => {
   it("handles large data sets correctly", async () => {
     const largeData = {
       fixedContent: {
-        disableSettings: false,
         logoutUrl: "https://mysite.invalid/logout",
         userPreferencesUrl: "https://mysite.invalid/pref",
         userSettingsUrl: "https://mysite.invalid/sett",

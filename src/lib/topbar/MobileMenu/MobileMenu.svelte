@@ -1,4 +1,3 @@
-<!-- MobileMenu.svelte -->
 <script>
   export let isCustomMenuExpanded;
   export let isFixedMenuExpanded;
