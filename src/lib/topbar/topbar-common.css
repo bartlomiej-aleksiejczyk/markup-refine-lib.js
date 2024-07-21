@@ -1,0 +1,41 @@
+.topbar * {
+  font-weight: 550;
+  font-size: 1.05rem;
+}
+:host,
+:host * {
+  font-family: var(--global-font, sans-serif);
+  box-sizing: content-box;
+}
+.hamburger {
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+  padding: 0 1rem;
+  text-align: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.topbar__link {
+  padding: 0 1rem;
+  height: 100%;
+  color: var(--color-text-on-primary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.topbar__link:hover {
+  background-color: var(--color-primary-light);
+}
+
+.topbar__icon {
+  padding: 0;
+  height: 80%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

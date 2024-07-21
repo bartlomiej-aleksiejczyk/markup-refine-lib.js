@@ -17,14 +17,14 @@ export function validateTopbarItems(data) {
         return false;
     }
 
-    if (item.iconLink && typeof item.iconLink !== "string") return false;
+    if (item.iconName && typeof item.iconName !== "string") return false;
 
     const allowedProperties = [
       "defaultName",
       "id",
       "type",
       "link",
-      "iconLink",
+      "iconName",
       "objects",
     ];
     const hasOnlyAllowedProperties = Object.keys(item).every((key) =>

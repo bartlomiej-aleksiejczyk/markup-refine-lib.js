@@ -1,16 +1,34 @@
 <script>
   import { onMount } from "svelte";
-  import { Home, User, Settings } from "lucide-svelte";
+  import {
+    Home,
+    User,
+    Settings,
+    Settings2,
+    Menu,
+    X,
+    Shield,
+    LogOut,
+    UserCog,
+  } from "lucide-svelte";
+  //TODO: Gracefull handling of wrong data
 
   export let iconName = "home";
+  export let clazz = "";
 
   let iconComponent;
   let color;
 
   const iconLookup = {
     home: Home,
+    menu: Menu,
     user: User,
     settings: Settings,
+    settings2: Settings2,
+    x: X,
+    shield: Shield,
+    logOut: LogOut,
+    userCog: UserCog,
   };
 
   const parseIconName = (name) => {
@@ -44,7 +62,7 @@
   });
 </script>
 
-<svelte:component this={iconComponent} stroke={color} />
+<svelte:component this={iconComponent} role="img" {color} class={clazz} />
 
 <style>
   :global(svg) {

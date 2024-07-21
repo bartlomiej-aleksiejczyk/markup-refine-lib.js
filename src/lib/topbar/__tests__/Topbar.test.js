@@ -1,7 +1,7 @@
 import { render, fireEvent, screen } from "@testing-library/svelte";
 import "@testing-library/jest-dom";
 import { describe, it, expect } from "vitest";
-import Topbar from "../Topbar.svelte";
+import Topbar from "../TopbarContainer.svelte";
 import sampleData from "./sampleData.json";
 
 const renderTopbarWithSampleData = (data) => {
@@ -12,7 +12,7 @@ describe("Topbar Component E2E", () => {
   it("renders topbar items correctly for default data", async () => {
     renderTopbarWithSampleData(sampleData);
 
-    expect(screen.getByAltText("null")).toBeInTheDocument();
+    expect(screen.getByText("null")).toBeInTheDocument();
     expect(screen.getByText("Custom Settings")).toBeInTheDocument();
 
     fireEvent.click(screen.getByText("Custom Settings"));
@@ -36,7 +36,7 @@ describe("Topbar Component E2E", () => {
       },
       content: Array.from({ length: 50 }, (_, i) => ({
         link: `https://mysite.invalid/link${i}`,
-        iconLink: `https://img.icons8.com/?size=100&id=6i0wNATb63Qv&format=png&color=000000`,
+        iconName: `https://img.icons8.com/?size=100&id=6i0wNATb63Qv&format=png&color=000000`,
         defaultName: `Link ${i}`,
         id: `link${i}`,
         type: "link",

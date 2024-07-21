@@ -1,0 +1,25 @@
+.topbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  align-items: center;
+  height: 3rem;
+}
+
+.topbar__custom-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  height: 3rem;
+}
+
+.topbar__fixed-items {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  height: 3rem;
+}
