@@ -1,6 +1,6 @@
 <script>
   export let item;
-  export let isLeftOriented;
+  export let isLeftOriented = false;
   import DynamicIcon from "../../DynamicIcon/DynamicIcon.svelte";
 </script>
 

@@ -7,6 +7,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    setupFilesAfterEnv: ["./vitest-setup.js"],
+    setupFilesAfterEnv: ["src/lib/**/*.{js,svelte}"],
+    coverage: {
+      include: ["src/*"],
+    },
   },
 });
