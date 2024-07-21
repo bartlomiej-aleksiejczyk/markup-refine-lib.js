@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "fixedContent": {
+      "type": "object",
+      "properties": {
+        "logoutUrl": { "type": "string", "format": "uri" },
+        "userPreferencesUrl": { "type": "string", "format": "uri" },
+        "userSettingsUrl": { "type": "string", "format": "uri" }
+      },
+      "required": ["logoutUrl", "userPreferencesUrl", "userSettingsUrl"]
+    },
+    "content": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "oneOf": [
+          {
+            "properties": {
+              "link": { "type": "string", "format": "uri" },
+              "iconName": { "type": "string" },
+              "defaultName": { "type": ["string", "null"] },
+              "id": { "type": "string" },
+              "type": { "type": "string", "enum": ["link"] }
+            },
+            "required": ["link", "defaultName", "id", "type"]
+          },
+          {
+            "properties": {
+              "defaultName": { "type": "string" },
+              "type": { "type": "string", "enum": ["container"] },
+              "id": { "type": "string" },
+              "objects": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "link": { "type": "string", "format": "uri" },
+                    "iconName": { "type": "string" },
+                    "defaultName": { "type": "string" },
+                    "id": { "type": "string" },
+                    "type": { "type": "string", "enum": ["link"] }
+                  },
+                  "required": ["link", "defaultName", "id", "type"]
+                }
+              }
+            },
+            "required": ["defaultName", "id", "type", "objects"]
+          }
+        ]
+      }
+    }
+  },
+  "required": ["fixedContent", "content"]
+}
