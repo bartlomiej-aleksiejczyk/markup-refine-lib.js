@@ -2,13 +2,22 @@ import { defineConfig } from "vitest/config";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { svelteTesting } from "@testing-library/svelte/vite";
 import { resolve } from "path";
+import { version } from "./package.json";
 
 export default defineConfig({
+  define: {
+    "process.env.VITE_APP_VERSION": JSON.stringify(version),
+  },
   plugins: [svelte(), svelteTesting()],
   build: {
     outDir: "dist",
     rollupOptions: {
       input: resolve(__dirname, "src/main.prod.js"),
+      output: {
+        entryFileNames: `panelCreatorLibrary-v${version}-[hash].js`,
+        chunkFileNames: `panelCreatorLibrary-v${version}-[hash].js`,
+        assetFileNames: `panelCreatorLibrary-v${version}-[hash].[ext]`,
+      },
     },
   },
   server: {

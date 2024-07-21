@@ -20,7 +20,7 @@
   import { validateTopbarItems } from "./inputProcessingFunctions/validateTopbarItems";
   import { getFixedItems } from "./inputProcessingFunctions/getFixedItems";
 
-  export let data;
+  export let data = {};
 
   let topbarItems = writable([]);
   let fixedTopbarItems = writable({});
@@ -40,6 +40,7 @@
   }
 
   function setData(value) {
+    if (!value || Object.keys(value).length === 0) return;
     try {
       const jsonData = JSON.parse(value);
       if (!validateTopbarItems(jsonData)) {
@@ -61,7 +62,6 @@
   }
 
   afterUpdate(() => {
-    if (!data) return;
     setData(data);
   });
 
