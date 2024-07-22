@@ -29,34 +29,30 @@ export const getFixedItems = (data) => {
     ],
   };
 
-  const logoutItemIndex = fixedItems.objects.findIndex(
-    (item) => item.id === "logout"
-  );
-  const preferenceItemIndex = fixedItems.objects.findIndex(
-    (item) => item.id === "userPreferences"
-  );
-  const settingsItemIndex = fixedItems.objects.findIndex(
-    (item) => item.id === "userSettings"
-  );
+  for (let i = fixedItems.objects.length - 1; i >= 0; i--) {
+    let item = fixedItems.objects[i];
+    if (item.id === "logout" && data.fixedContent.logoutUrl) {
+      item.link = data.fixedContent.logoutUrl;
+    } else if (
+      item.id === "userPreferences" &&
+      data.fixedContent.userPreferencesUrl
+    ) {
+      item.link = data.fixedContent.userPreferencesUrl;
+    } else if (
+      item.id === "userSettings" &&
+      data.fixedContent.userSettingsUrl
+    ) {
+      item.link = data.fixedContent.userSettingsUrl;
+    }
 
-  if (data.fixedContent.logoutUrl) {
-    fixedItems.objects[logoutItemIndex].link = data.fixedContent.logoutUrl;
-  } else {
-    fixedItems.objects.splice(logoutItemIndex, 1);
-  }
-
-  if (data.fixedContent.userPreferencesUrl) {
-    fixedItems.objects[preferenceItemIndex].link =
-      data.fixedContent.userPreferencesUrl;
-  } else {
-    fixedItems.objects.splice(preferenceItemIndex, 1);
-  }
-
-  if (data.fixedContent.userSettingsUrl) {
-    fixedItems.objects[settingsItemIndex].link =
-      data.fixedContent.userSettingsUrl;
-  } else {
-    fixedItems.objects.splice(settingsItemIndex, 1);
+    if (
+      (item.id === "logout" && !data.fixedContent.logoutUrl) ||
+      (item.id === "userPreferences" &&
+        !data.fixedContent.userPreferencesUrl) ||
+      (item.id === "userSettings" && !data.fixedContent.userSettingsUrl)
+    ) {
+      fixedItems.objects.splice(i, 1);
+    }
   }
 
   return fixedItems;

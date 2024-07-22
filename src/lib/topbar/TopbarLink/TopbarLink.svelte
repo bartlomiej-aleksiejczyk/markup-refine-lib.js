@@ -1,4 +1,3 @@
-<!-- TopbarLink.svelte -->
 <script>
   export let item;
   import DynamicIcon from "../../DynamicIcon/DynamicIcon.svelte";
