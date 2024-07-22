@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "nonscheme:/panel-creator/dynamic-topbar-input/v0.1.0",
+  "$id": "nonscheme:/panel-creator/dynamic-topbar-input/v0.1.1",
   "type": "object",
   "properties": {
     "fixedContent": {
@@ -9,8 +9,7 @@
         "logoutUrl": { "type": "string", "format": "uri" },
         "userPreferencesUrl": { "type": "string", "format": "uri" },
         "userSettingsUrl": { "type": "string", "format": "uri" }
-      },
-      "required": ["logoutUrl", "userPreferencesUrl", "userSettingsUrl"]
+      }
     },
     "content": {
       "type": "array",
