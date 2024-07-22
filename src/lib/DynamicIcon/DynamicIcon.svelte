@@ -12,6 +12,7 @@
     UserCog,
   } from "lucide-svelte";
   //TODO: Gracefull handling of wrong data
+  //TODO: Add database icon
 
   export let iconName = "home";
   export let clazz = "";
