@@ -10,9 +10,9 @@
     Shield,
     LogOut,
     UserCog,
+    Database,
   } from "lucide-svelte";
   //TODO: Gracefull handling of wrong data
-  //TODO: Add database icon
 
   export let iconName = "home";
   export let clazz = "";
@@ -30,6 +30,7 @@
     shield: Shield,
     logOut: LogOut,
     userCog: UserCog,
+    database: Database,
   };
 
   const parseIconName = (name) => {
