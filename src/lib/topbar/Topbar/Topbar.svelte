@@ -12,7 +12,10 @@
 
 <div class="topbar">
   {#if $isRegularScreenModeEnabled}
-    <div class="topbar__custom-items">
+    <div class="topbar__header">
+      <h1 class="topbar__header-text">SuperAdmin</h1>
+    </div>
+    <div class="topbar__navigation-items">
       {#each $topbarItems as item}
         {#if item.type === "link"}
           <TopbarLink {item} />
@@ -20,8 +23,6 @@
           <TopbarDropdown {item} />
         {/if}
       {/each}
-    </div>
-    <div class="topbar__fixed-items">
       <TopbarDropdown item={$fixedTopbarItems} isLeftOriented />
     </div>
   {:else}

@@ -1,16 +1,15 @@
 .topbar * {
-  font-weight: 550;
-  font-size: 1.05rem;
+  font-weight: 500;
+  font-size: 0.75rem;
 }
 :host,
 :host * {
-  font-family: var(--global-font, sans-serif);
   box-sizing: content-box;
 }
 .hamburger {
   display: flex;
   align-items: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
   padding: 0 1rem;
   text-align: center;
   cursor: pointer;
@@ -19,15 +18,11 @@
 }
 
 .topbar__link {
-  padding: 0 1rem;
   height: 100%;
   color: var(--color-text-on-primary);
   text-decoration: none;
   display: flex;
   align-items: center;
-}
-.topbar__link:hover {
-  background-color: var(--color-primary-light);
 }
 
 .topbar__icon {
@@ -37,5 +32,24 @@
   vertical-align: middle;
   align-items: center;
   display: flex;
+  justify-content: center;
+}
+
+.topbar__dropdown:hover .topbar-button {
+  background-color: var(--color-primary-light);
+}
+
+.topbar__link:hover .topbar-button {
+  background-color: var(--color-primary-light);
+}
+
+.topbar-button {
+  height: 70%;
+  width: 80%;
+  border-radius: var(--border-radius-medium);
+  margin: 0.2rem;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }

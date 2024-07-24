@@ -4,22 +4,31 @@
   justify-content: space-between;
   background-color: var(--color-primary);
   color: var(--color-text-on-primary);
-  align-items: center;
+  align-items: end;
   height: 3rem;
 }
 
-.topbar__custom-items {
+.topbar__header {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   height: 3rem;
+  margin-left: 2rem;
 }
 
-.topbar__fixed-items {
+.topbar__header-text {
+  font-size: 1.6rem !important;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold !important;
+  letter-spacing: 2px;
+}
+
+.topbar__navigation-items {
   display: flex;
   flex-direction: row;
   justify-content: start;
   align-items: center;
   height: 3rem;
+  margin-right: 0.3rem;
 }
