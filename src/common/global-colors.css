@@ -1,30 +1,30 @@
 :root {
   /* Primary palette */
-  --color-primary: #26547c;
-  --color-primary-dark: #1b375a;
-  --color-primary-light: #4c7298;
-  --color-primary-lighter: #bcd2e7;
+  --color-primary: #0077be;
+  --color-primary-dark: #005691;
+  --color-primary-light: #239ad5;
+  --color-primary-lighter: #83c2f0;
 
   /* Accent palette */
-  --color-accent: #50bfe6;
+  --color-accent: #20a4f3; /* Vivid azure */
 
   /* Neutral palette */
-  --color-background: #ececec;
-  --color-surface: #ffffff;
-  --color-border: #cccccc;
+  --color-background: #dae8f1;
+  --color-surface: #f0f7fd;
+  --color-border: #c3d8e9;
 
   /* Text colors */
-  --color-text-primary: #212121;
-  --color-text-secondary: #646464;
+  --color-text-primary: #1a1f36;
+  --color-text-secondary: #4f6272;
   --color-text-on-primary: #ffffff;
 
   /* Feedback colors for UI status messages */
-  --color-success: #48a23f;
-  --color-info: #31a2f2;
-  --color-warning: #ffa726;
-  --color-error: #e53935;
+  --color-success: #34b3f1;
+  --color-info: #1e90ff;
+  --color-warning: #579cd3;
+  --color-error: #3e7cb1;
 
   /* Interactive states */
-  --color-hover: #4c7298;
-  --color-disabled: #e0e0e0;
+  --color-hover: #239ad5;
+  --color-disabled: #b0c9e0;
 }
