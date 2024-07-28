@@ -17,14 +17,6 @@
   border: none;
 }
 
-.topbar__link {
-  height: 100%;
-  color: var(--color-text-on-primary);
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-}
-
 .topbar__icon {
   padding: 0;
   height: 80%;
@@ -45,11 +37,25 @@
 
 .topbar-button {
   height: 70%;
-  width: 80%;
+  max-width: 15rem;
   border-radius: var(--border-radius-medium);
   margin: 0.2rem;
   padding: 0 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.topbar-text {
+  max-width: 100%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.topbar-text--large {
+  font-size: 0.9rem;
+  margin: 0.3rem;
 }

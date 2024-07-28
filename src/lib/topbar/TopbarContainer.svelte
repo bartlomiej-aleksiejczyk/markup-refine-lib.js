@@ -18,38 +18,47 @@
   import MobileMenu from "./MobileMenu/MobileMenu.svelte";
   import DynamicIcon from "../DynamicIcon/DynamicIcon.svelte";
   import Topbar from "./Topbar/Topbar.svelte";
-  import { validateTopbarItems } from "./inputProcessingFunctions/validateTopbarItems";
+  import { validateTopbarSchema } from "./inputProcessingFunctions/validateTopbarSchema";
   import { getFixedItems } from "./inputProcessingFunctions/getFixedItems";
 
   export let data = {};
 
   let topbarItems = writable([]);
   let fixedTopbarItems = writable({});
+  let topbarSettings = writable({});
+
   let screenWidth = writable(window.innerWidth);
   let isCustomMenuExpanded = writable(false);
   let isFixedMenuExpanded = writable(false);
   let isRegularScreenModeEnabled = writable(true);
 
+  let isOverflown = writable(false);
+
   const MOBILE_MODE_BREAKPOINT_PIXELS = 600;
 
-  $: if ($screenWidth >= MOBILE_MODE_BREAKPOINT_PIXELS) {
-    isCustomMenuExpanded.set(false);
-    isFixedMenuExpanded.set(false);
-    isRegularScreenModeEnabled.set(true);
-  } else {
-    isRegularScreenModeEnabled.set(false);
+  $: checkBreakpointAndOverflow(), $screenWidth;
+
+  function checkBreakpointAndOverflow() {
+    if ($screenWidth >= MOBILE_MODE_BREAKPOINT_PIXELS) {
+      isCustomMenuExpanded.set(false);
+      isFixedMenuExpanded.set(false);
+      isRegularScreenModeEnabled.set(true);
+    } else {
+      isRegularScreenModeEnabled.set(false);
+    }
   }
 
   function setData(value) {
     if (!value || Object.keys(value).length === 0) return;
     try {
       const jsonData = JSON.parse(value);
-      if (!validateTopbarItems(jsonData)) {
+      if (!validateTopbarSchema(jsonData)) {
         console.error("Invalid format for top bar data input");
         return;
       }
       topbarItems.set(jsonData.content);
       fixedTopbarItems.set(getFixedItems(jsonData));
+      topbarSettings.set(jsonData.topbarSettings);
     } catch (error) {
       console.error("Error setting data in Topbar:", error);
     }
@@ -67,8 +76,10 @@
   });
 
   onMount(() => {
+    checkOverflow();
     const handleResize = () => {
       screenWidth.set(window.innerWidth);
+      checkOverflow();
     };
 
     window.addEventListener("resize", handleResize);
@@ -86,6 +97,7 @@
     {isRegularScreenModeEnabled}
     {toggleCustomMenu}
     {toggleFixedMenu}
+    {topbarSettings}
   />
   <MobileMenu
     {isCustomMenuExpanded}

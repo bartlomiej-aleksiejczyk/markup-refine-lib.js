@@ -3,12 +3,11 @@
 }
 
 .hamburger-menu-container > * {
-  font-size: 0.9rem;
+  font-size: 1rem;
 }
 .topbar__icon--mobile {
   height: 100%;
-  margin-left: -5px;
-  margin-right: 5px;
+  padding: 0.1rem;
 }
 
 .topbar__link--mobile {
@@ -19,6 +18,9 @@
   text-decoration: none;
   gap: 0.5rem;
   padding: 0.8rem 1.6rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .topbar-section--mobile {
   display: flex;
@@ -27,33 +29,48 @@
   padding: 0 1rem 1rem 1rem;
   color: var(--color-text-on-primary);
   text-decoration: none;
+  overflow: hidden;
 }
 .dropbtn--mobile {
   color: var(--color-text-on-primary);
   padding: 1rem 0.5rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .topbar-separator--mobile {
   width: 100%;
-  margin: 0;
-  border-radius: 5px;
-  border: solid 1px var(--color-primary);
+  border: 0;
+  border-top: 2px solid var(--color-primary);
 }
 
 .topbar__dropdown-content--mobile {
-  background-color: var(--color-primary-lighter);
+  background-color: var(--color-primary);
   display: flex;
   flex-direction: column;
   border-radius: var(--border-radius-medium);
+  overflow: hidden;
 }
 
 .topbar-section-link--mobile {
-  padding: 0.3rem 0.8rem;
-  color: var(--color-text-primary);
+  padding: 0.6rem 0.8rem;
+  color: var(--color-text-on-primary);
+  text-overflow: ellipsis;
   text-decoration: none;
   width: 100%;
-  display: flex;
   align-items: center;
   height: 1.2rem;
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.topbar-text--mobile {
+  width: 95%;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .topbar-section-container--mobile {
@@ -68,5 +85,5 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: var(--color-primary-lighter);
+  background-color: var(--color-primary);
 }

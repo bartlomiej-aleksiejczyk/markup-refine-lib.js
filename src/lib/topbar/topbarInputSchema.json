@@ -1,14 +1,22 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "nonscheme:/panel-creator/dynamic-topbar-input/v0.1.1",
+  "$id": "nonscheme:/panel-creator/dynamic-topbar-input/v0.2.0",
   "type": "object",
   "properties": {
+    "topbarSettings": {
+      "type": "object",
+      "properties": {
+        "title": { "type": ["string", "null"] },
+        "logoUri": { "type": "string", "format": "uri-reference" },
+        "homeUri": { "type": "string", "format": "uri-reference" }
+      }
+    },
     "fixedContent": {
       "type": "object",
       "properties": {
-        "logoutUrl": { "type": "string", "format": "uri" },
-        "userPreferencesUrl": { "type": "string", "format": "uri" },
-        "userSettingsUrl": { "type": "string", "format": "uri" }
+        "logoutUrl": { "type": "string", "format": "uri-reference" },
+        "userPreferencesUrl": { "type": "string", "format": "uri-reference" },
+        "userSettingsUrl": { "type": "string", "format": "uri-reference" }
       }
     },
     "content": {
@@ -18,7 +26,7 @@
         "oneOf": [
           {
             "properties": {
-              "link": { "type": "string", "format": "uri" },
+              "link": { "type": "string", "format": "uri-reference" },
               "iconName": { "type": "string" },
               "defaultName": { "type": ["string", "null"] },
               "id": { "type": "string" },

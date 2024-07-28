@@ -18,7 +18,7 @@
                 <DynamicIcon iconName={item.iconName + "--reversed-primary"} />
               </div>
             {/if}
-            {item.defaultName || ""}
+            <span class="topbar-text--mobile">{item.defaultName || ""}</span>
           </a>
         {:else if item.type === "container"}
           <div class="topbar-section--mobile">
@@ -28,16 +28,22 @@
                 <DynamicIcon iconName={item.iconName + "--reversed-primary"} />
               </div>
             {/if}
-            <span class="dropbtn--mobile">{item.defaultName}</span>
+            <span class="dropbtn--mobile topbar-text--mobile"
+              >{item.defaultName}</span
+            >
             <div class="topbar__dropdown-content--mobile">
               {#each item.objects as subItem}
                 <a href={subItem.link} class="topbar-section-link--mobile">
                   {#if subItem.iconName}
                     <div class="topbar__icon--mobile">
-                      <DynamicIcon iconName={subItem.iconName + "--primary"} />
+                      <DynamicIcon
+                        iconName={subItem.iconName + "--reversed-primary"}
+                      />
                     </div>
                   {/if}
-                  {subItem.defaultName || ""}
+                  <span class="topbar-text--mobile"
+                    >{subItem.defaultName || ""}</span
+                  >
                 </a>
               {/each}
             </div>
@@ -65,7 +71,9 @@
             <a href={subItem.link} class="topbar-section-link--mobile">
               {#if subItem.iconName}
                 <div class="topbar__icon--mobile">
-                  <DynamicIcon iconName={subItem.iconName + "--primary"} />
+                  <DynamicIcon
+                    iconName={subItem.iconName + "--reversed-primary"}
+                  />
                 </div>
               {/if}
               {subItem.defaultName || ""}

@@ -1,4 +1,9 @@
 {
+  "topbarSettings": {
+    "title": "Demo Topbar",
+    "logoUri": "https://img.icons8.com/?size=100&id=baTWeZAqG8lF&format=png&color=ffffff",
+    "homeUri": "/index.dev.html"
+  },
   "fixedContent": {
     "logoutUrl": "https://mysite.invalid/logout",
     "userPreferencesUrl": "https://mysite.invalid/pref",
@@ -7,13 +12,13 @@
   "content": [
     {
       "link": "https://mysite.invalid/users/",
-      "iconName": "x",
-      "defaultName": "null",
+      "iconName": "Nie zlamiesz mnie nie nie nie nie",
+      "defaultName": "Nie zlamiesz mnie nie nie nie nie Nie zlamiesz mnie nie nie nie nie Nie zlamiesz mnie nie nie nie nie",
       "id": "users",
       "type": "link"
     },
     {
-      "defaultName": "Custom Settings",
+      "defaultName": "Custom Settings Custom Settings Custom Settings Custom Settings",
       "type": "container",
       "id": "settings",
       "objects": [
@@ -26,7 +31,7 @@
         },
         {
           "link": "https://mysite.invalid/privacy/",
-          "defaultName": "Privacy",
+          "defaultName": "Privacy jest najwazniejsza rzecza na swiecie",
           "id": "privacy",
           "type": "link"
         },

@@ -11,6 +11,7 @@
     "Noto Color Emoji";
 }
 :root * {
-  font-family: "Segoe UI", sans-serif;
-  --border-radius-medium: 6px;
+  font-family: "Lucida Console", monospace;
+  --border-radius-medium: 3px;
+  --padding-button: 0.3rem;
 }

@@ -10,7 +10,7 @@
         <DynamicIcon iconName={item.iconName + "--reversed-primary"} />
       </div>
     {/if}
-    <span>
+    <span class="topbar-text topbar-text--large">
       {item.defaultName || ""}
     </span>
   </div>
@@ -18,4 +18,5 @@
 
 <style>
   @import "../topbar-common.css";
+  @import "./topbar-link.css";
 </style>
