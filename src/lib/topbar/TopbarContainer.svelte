@@ -31,21 +31,16 @@
   let isCustomMenuExpanded = writable(false);
   let isFixedMenuExpanded = writable(false);
   let isRegularScreenModeEnabled = writable(true);
-
-  let isOverflown = writable(false);
+  let isHeadlineEnabled = writable(false);
 
   const MOBILE_MODE_BREAKPOINT_PIXELS = 600;
 
-  $: checkBreakpointAndOverflow(), $screenWidth;
-
-  function checkBreakpointAndOverflow() {
-    if ($screenWidth >= MOBILE_MODE_BREAKPOINT_PIXELS) {
-      isCustomMenuExpanded.set(false);
-      isFixedMenuExpanded.set(false);
-      isRegularScreenModeEnabled.set(true);
-    } else {
-      isRegularScreenModeEnabled.set(false);
-    }
+  $: if ($screenWidth >= MOBILE_MODE_BREAKPOINT_PIXELS) {
+    isCustomMenuExpanded.set(false);
+    isFixedMenuExpanded.set(false);
+    isRegularScreenModeEnabled.set(true);
+  } else {
+    isRegularScreenModeEnabled.set(false);
   }
 
   function setData(value) {
@@ -59,6 +54,10 @@
       topbarItems.set(jsonData.content);
       fixedTopbarItems.set(getFixedItems(jsonData));
       topbarSettings.set(jsonData.topbarSettings);
+
+      isHeadlineEnabled.set(
+        jsonData?.topbarSettings?.title || jsonData?.topbarSettings?.logoUri
+      );
     } catch (error) {
       console.error("Error setting data in Topbar:", error);
     }
@@ -76,10 +75,8 @@
   });
 
   onMount(() => {
-    checkOverflow();
     const handleResize = () => {
       screenWidth.set(window.innerWidth);
-      checkOverflow();
     };
 
     window.addEventListener("resize", handleResize);
@@ -98,6 +95,7 @@
     {toggleCustomMenu}
     {toggleFixedMenu}
     {topbarSettings}
+    {isHeadlineEnabled}
   />
   <MobileMenu
     {isCustomMenuExpanded}

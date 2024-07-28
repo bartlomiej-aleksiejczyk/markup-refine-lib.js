@@ -9,6 +9,10 @@
   overflow-y: hidden;
 }
 
+.topbar--centered {
+  justify-content: center;
+}
+
 .topbar__header {
   display: flex;
   flex-direction: row;

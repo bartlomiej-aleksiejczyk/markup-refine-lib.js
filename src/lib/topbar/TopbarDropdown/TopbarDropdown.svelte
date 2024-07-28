@@ -7,7 +7,6 @@
   let dropdownContent;
 
   onMount(() => {
-    console.log(document.querySelector("dynamic-topbar"));
     const topbarRef = document
       .querySelector("dynamic-topbar")
       .shadowRoot.querySelector(".topbar");
@@ -22,7 +21,6 @@
       let viewPortEdgeDistance;
       if (isLeftOriented) {
         availableSpace = buttonRect.left - additionalDropdownSpace;
-        console.log(buttonRect.right);
         dropdownContent.style.right = `${window.innerWidth - buttonRect.right}px`;
       } else {
         availableSpace =

@@ -36,8 +36,9 @@
 .topbar__dropdown-link {
   color: var(--color-text-primary);
   height: 1.3rem;
-  padding: 0.1rem 0.3rem;
+  padding: 0 0.3rem 0.2rem 0.3rem;
   display: flex;
+  margin-top: 0.2rem;
   align-items: center;
   text-align: center;
   text-wrap: nowrap;
@@ -59,5 +60,5 @@
 }
 
 .topbar-text--dropdown {
-  margin: 0.4rem;
+  margin: 0.5rem;
 }
