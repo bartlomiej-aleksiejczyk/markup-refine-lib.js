@@ -13,12 +13,12 @@
     {
       "link": "https://mysite.invalid/users/",
       "iconName": "Nie zlamiesz mnie nie nie nie nie",
-      "defaultName": "Nie zlamiesz mnie nie nie nie nie Nie zlamiesz mnie nie nie nie nie Nie zlamiesz mnie nie nie nie nie",
+      "defaultName": "Customers",
       "id": "users",
       "type": "link"
     },
     {
-      "defaultName": "Custom Settings Custom Settings Custom Settings Custom Settings",
+      "defaultName": "Custom Settings",
       "type": "container",
       "id": "settings",
       "objects": [
@@ -31,7 +31,7 @@
         },
         {
           "link": "https://mysite.invalid/privacy/",
-          "defaultName": "Privacy jest najwazniejsza rzecza na swiecie",
+          "defaultName": "Privacy",
           "id": "privacy",
           "type": "link"
         },

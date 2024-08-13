@@ -4,15 +4,33 @@ import { describe, it, expect } from "vitest";
 import Topbar from "../TopbarContainer.svelte";
 import sampleData from "./sampleData.json";
 
+beforeEach(() => {
+  vi.spyOn(document, "querySelector").mockImplementation((selector) => {
+    if (selector === "dynamic-topbar") {
+      return {
+        shadowRoot: {
+          querySelector: vi.fn().mockImplementation((innerSelector) => {
+            if (innerSelector === ".topbar") {
+              return document.createElement("div");
+            }
+            return null;
+          }),
+        },
+      };
+    }
+    return document.querySelector(selector);
+  });
+});
+
 const renderTopbarWithSampleData = (data) => {
   render(Topbar, { data: JSON.stringify(data) });
 };
 
-describe("Topbar Component E2E", () => {
+describe("TopbarDropdown component tests", () => {
   it("renders topbar items correctly for default data", async () => {
     renderTopbarWithSampleData(sampleData);
 
-    expect(screen.getByText("null")).toBeInTheDocument();
+    expect(screen.getByText("Customers")).toBeInTheDocument();
     expect(screen.getByText("Custom Settings")).toBeInTheDocument();
 
     fireEvent.click(screen.getByText("Custom Settings"));
