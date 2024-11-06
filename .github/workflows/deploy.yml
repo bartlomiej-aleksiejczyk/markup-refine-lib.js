@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Build library and demo page
-        run: node src/buildScripts/buildDemoPage.js
+        run: npm buildDemoPage
 
       - name: GitHub Pages action
         uses: peaceiris/actions-gh-pages@v4
