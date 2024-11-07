@@ -24,7 +24,16 @@ jobs:
       - name: Build library and demo page
         run: npm run buildDemoPage
 
-      - name: GitHub Pages action
+      - name: Create GitHub Release and Upload Artifacts
+        id: upload-release
+        uses: softprops/action-gh-release@v2.0.9
+        with:
+          files: ./dist/*
+          token: ${{ secrets.GITHUB_TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
