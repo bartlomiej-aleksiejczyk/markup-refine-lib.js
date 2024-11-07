@@ -19,16 +19,18 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
   try {
     const validTypes = ["major", "minor", "patch"];
     if (!validTypes.includes(versionType)) {
-      throw new Error(`Invalid version type specified: ${versionType}. Use major, minor, or patch.`);
+      throw new Error(
+        `Invalid version type specified: ${versionType}. Use major, minor, or patch.`
+      );
     }
 
     const packageJsonPath = path.join(process.cwd(), "package.json");
     const packageLockJsonPath = path.join(process.cwd(), "package-lock.json");
-    const readmePath = path.join(process.cwd(), "README.md");
-    const documentationPath = path.join(process.cwd(), "docs/", "index.html");
 
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-    const versionParts = packageJson.version.split(".").map((x) => parseInt(x, 10));
+    const versionParts = packageJson.version
+      .split(".")
+      .map((x) => parseInt(x, 10));
 
     switch (versionType) {
       case "major":
@@ -49,22 +51,15 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
 
     fs.writeFileSync(packageJsonPath, JSON.stringify(packageJson, null, 2));
     if (fs.existsSync(packageLockJsonPath)) {
-      const packageLockJson = JSON.parse(fs.readFileSync(packageLockJsonPath, "utf8"));
-      packageLockJson.version = packageJson.version;
-      fs.writeFileSync(packageLockJsonPath, JSON.stringify(packageLockJson, null, 2));
-    }
-
-    const updateVersionInFile = (filePath, version) => {
-      const content = fs.readFileSync(filePath, "utf8");
-      const updatedContent = content.replace(
-        /markup-refine-lib\.css@\d+\.\d+\.\d+/g,
-        `markup-refine-lib.css@${version}`
+      const packageLockJson = JSON.parse(
+        fs.readFileSync(packageLockJsonPath, "utf8")
       );
-      fs.writeFileSync(filePath, updatedContent);
-    };
-
-    updateVersionInFile(readmePath, packageJson.version);
-    updateVersionInFile(documentationPath, packageJson.version);
+      packageLockJson.version = packageJson.version;
+      fs.writeFileSync(
+        packageLockJsonPath,
+        JSON.stringify(packageLockJson, null, 2)
+      );
+    }
 
     const commitMessage = `
     Release ${versionType} version v${packageJson.version}
