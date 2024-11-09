@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Build library and demo page
-        run: npm run buildDemoPage
+        run: npm run build
 
       - name: Create GitHub Release and Upload Artifacts
         id: upload-release
@@ -34,6 +34,9 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build library and demo page
+        run: npm run buildDemoPage
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
