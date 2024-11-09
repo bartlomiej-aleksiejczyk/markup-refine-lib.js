@@ -14,9 +14,9 @@ export default defineConfig({
     rollupOptions: {
       input: resolve(__dirname, "src/main.prod.js"),
       output: {
-        entryFileNames: `panelCreatorLibrary-v${version}-[hash].js`,
-        chunkFileNames: `panelCreatorLibrary-v${version}-[hash].js`,
-        assetFileNames: `panelCreatorLibrary-v${version}-[hash].[ext]`,
+        entryFileNames: `markupRefineLibJs -v${version}-[hash].js`,
+        chunkFileNames: `markupRefineLibJs-v${version}-[hash].js`,
+        assetFileNames: `markupRefineLibJs-v${version}-[hash].[ext]`,
       },
     },
   },
