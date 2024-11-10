@@ -24,6 +24,9 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
       );
     }
 
+    await execShellCommand("npm run build");
+    await execShellCommand("git add dist/");
+
     const packageJsonPath = path.join(process.cwd(), "package.json");
     const packageLockJsonPath = path.join(process.cwd(), "package-lock.json");
 
