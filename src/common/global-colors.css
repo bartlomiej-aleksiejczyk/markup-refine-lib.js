@@ -1,11 +1,12 @@
 :root {
   /* Primary palette */
-  --color-primary: #1979b1;
-  --color-primary-lighter: #208ac8;
+  --color-primary: #686868;
+  --color-primary-lighter: #8b8b8b;
+  --color-primary-darker: #525252;
 
   /* Neutral palette */
-  --color-background: #d4e4ed;
-  --color-surface: #ebf3fa;
+  --color-background: #f5f5f5;
+  --color-background-light-contrast: #e6e6e6;
 
   /* Text colors */
   --color-text-primary: #17232b;

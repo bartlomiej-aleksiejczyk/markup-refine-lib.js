@@ -1,5 +1,5 @@
 .hamburger-menu-container {
-  background-color: var(--color-primary-lighter);
+  background-color: var(--color-primary-darker);
 }
 
 .hamburger-menu-container > * {
@@ -21,6 +21,9 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  &:hover {
+    background-color: var(--color-primary-lighter);
+  }
 }
 .topbar-section--mobile {
   display: flex;
@@ -63,6 +66,9 @@
   display: flex;
   overflow: hidden;
   white-space: nowrap;
+  &:hover {
+    background-color: var(--color-primary-lighter);
+  }
 }
 
 .topbar-text--mobile {

@@ -11,7 +11,7 @@
   position: fixed;
   white-space: nowrap;
   opacity: 0;
-  background-color: var(--color-surface);
+  background-color: var(--color-background);
   box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 
@@ -46,7 +46,7 @@
 }
 
 .topbar__dropdown-link:hover .topbar__dropdown-button {
-  background-color: var(--color-background);
+  background-color: var(--color-background-light-contrast);
 }
 .topbar__dropdown-button {
   height: 100%;
