@@ -65,7 +65,7 @@
           document.addEventListener("DOMContentLoaded", () => {
             const topBar = document.querySelector("dynamic-topbar");
             if (topBar) {
-              topBar.data = sampleDate;
+              topBar.data = JSON.stringify(sampleDate);
             }
           });
     </script>
