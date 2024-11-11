@@ -28,11 +28,11 @@
 }
 
 .topbar__dropdown:hover .topbar-button {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary-lighter);
 }
 
 .topbar__link:hover .topbar-button {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary-lighter);
 }
 
 .topbar-button {

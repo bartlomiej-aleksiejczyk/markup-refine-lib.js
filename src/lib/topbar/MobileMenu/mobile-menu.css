@@ -1,5 +1,5 @@
 .hamburger-menu-container {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-primary-lighter);
 }
 
 .hamburger-menu-container > * {
