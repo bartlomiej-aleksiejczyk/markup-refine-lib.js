@@ -1,4 +1,4 @@
-name: Deploy new version
+name: Run tests and CI checks
 
 on:
   push:
