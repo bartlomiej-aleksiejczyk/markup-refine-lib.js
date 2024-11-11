@@ -11,7 +11,6 @@
   import DynamicIcon from "../../DynamicIcon/DynamicIcon.svelte";
   import TopbarLink from "../TopbarLink/TopbarLink.svelte";
   import TopbarDropdown from "../TopbarDropdown/TopbarDropdown.svelte";
-  console.log($topbarItems.length);
 </script>
 
 <div class="topbar {$isHeadlineEnabled ? '' : 'topbar--centered'}">
