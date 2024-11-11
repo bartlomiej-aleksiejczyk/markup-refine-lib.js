@@ -68,7 +68,7 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
     }
     const readmeContent = fs.readFileSync(readmePath, "utf8");
     const updatedReadmeContent = readmeContent.replace(
-      /markup-refine-lib\.js@\d+\.\d+\.\d+/,
+      /markup-refine-lib\.js@\d+\.\d+\.\d+/g,
       `markup-refine-lib.js@${packageJson.version}`
     );
     fs.writeFileSync(readmePath, updatedReadmeContent);
