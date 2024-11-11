@@ -27,12 +27,11 @@
 }
 
 .topbar__header-text {
+  font-family: "Oxanium";
+
   font-size: 1.8rem !important;
   font-weight: bold !important;
-  font-style: italic;
-  word-spacing: -10px;
-  letter-spacing: 1px;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
   text-wrap: nowrap;
   white-space: nowrap;
 }
