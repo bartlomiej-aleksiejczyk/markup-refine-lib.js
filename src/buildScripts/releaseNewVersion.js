@@ -28,10 +28,6 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
     await execShellCommand("npm run build");
     await execShellCommand("git add dist/");
 
-    const files = await fs.readdir(DIST_DIR);
-    const scriptFiles = files.filter((file) => file.endsWith(".js"));
-    const cssFiles = files.filter((file) => file.endsWith(".css"));
-
     const packageJsonPath = path.join(process.cwd(), "package.json");
     const packageLockJsonPath = path.join(process.cwd(), "package-lock.json");
     const readmePath = path.join(process.cwd(), "README.md");
@@ -72,15 +68,15 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
     }
     const readmeContent = fs.readFileSync(readmePath, "utf8");
     const updatedReadmeContent = readmeContent.replace(
-      /markup-refine-lib\.css@\d+\.\d+\.\d+/,
-      `markup-refine-lib.css@${packageJson.version}`
+      /markup-refine-lib\.js@\d+\.\d+\.\d+/,
+      `markup-refine-lib.js@${packageJson.version}`
     );
     fs.writeFileSync(readmePath, updatedReadmeContent);
 
     const documentationContent = fs.readFileSync(documentationPath, "utf8");
     const updatedDocumentationContent = documentationContent.replace(
-      /markup-refine-lib\.css@\d+\.\d+\.\d+/g,
-      `markup-refine-lib.css@${packageJson.version}`
+      /markup-refine-lib\.js@\d+\.\d+\.\d+/g,
+      `markup-refine-lib.js@${packageJson.version}`
     );
     fs.writeFileSync(documentationPath, updatedDocumentationContent);
 

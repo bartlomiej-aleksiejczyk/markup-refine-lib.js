@@ -10,9 +10,65 @@
         margin: 0
       }
     </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bartlomiej-aleksiejczyk/markup-refine-lib.js@0.2.9/dist/markupRefineLibJs.min.css" />
   <body>
     <dynamic-topbar> </dynamic-topbar>
     <div id="app"></div>
-    <script type="module" src="/src/main.dev.js"></script>
+    <script type="module">
+        const sampleDate = {
+            "topbarSettings": {
+              "title": "Demo Topbar",
+              "logoUri": "https://img.icons8.com/?size=100&id=baTWeZAqG8lF&format=png&color=ffffff",
+              "homeUri": "/index.dev.html"
+            },
+            "fixedContent": {
+              "logoutUrl": "https://mysite.invalid/logout",
+              "userPreferencesUrl": "https://mysite.invalid/pref",
+              "userSettingsUrl": "https://mysite.invalid/sett"
+            },
+            "content": [
+              {
+                "link": "https://mysite.invalid/users/",
+                "iconName": "Nie zlamiesz mnie nie nie nie nie",
+                "defaultName": "Customers",
+                "id": "users",
+                "type": "link"
+              },
+              {
+                "defaultName": "Custom Settings",
+                "type": "container",
+                "id": "settings",
+                "objects": [
+                  {
+                    "link": "https://mysite.invalid/security/",
+                    "iconName": "shield",
+                    "defaultName": "Security",
+                    "id": "security",
+                    "type": "link"
+                  },
+                  {
+                    "link": "https://mysite.invalid/privacy/",
+                    "defaultName": "Privacy",
+                    "id": "privacy",
+                    "type": "link"
+                  },
+                  {
+                    "link": "https://mysite.invalid/privacy/",
+                    "defaultName": "GDPR",
+                    "id": "privacy",
+                    "type": "link"
+                  }
+                ]
+              }
+            ]
+          }
+          document.addEventListener("DOMContentLoaded", () => {
+            const topBar = document.querySelector("dynamic-topbar");
+            if (topBar) {
+              topBar.data = sampleDate;
+            }
+          });
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/bartlomiej-aleksiejczyk/markup-refine-lib.js@0.2.9/dist/markupRefineLibJs.min.js" crossorigin="anonymous"></script>
   </body>
 </html>
