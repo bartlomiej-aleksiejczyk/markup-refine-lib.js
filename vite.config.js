@@ -14,9 +14,8 @@ export default defineConfig({
     rollupOptions: {
       input: resolve(__dirname, "src/main.prod.js"),
       output: {
-        entryFileNames: `markupRefineLibJs -v${version}-[hash].js`,
-        chunkFileNames: `markupRefineLibJs-v${version}-[hash].js`,
-        assetFileNames: `markupRefineLibJs-v${version}-[hash].[ext]`,
+        entryFileNames: `markupRefineLibJs.min.js`,
+        assetFileNames: `markupRefineLibJs.min.[ext]`,
       },
     },
   },

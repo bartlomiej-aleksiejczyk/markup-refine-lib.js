@@ -15,6 +15,8 @@ async function execShellCommand(cmd) {
   }
 }
 
+const DIST_DIR = path.resolve("dist");
+
 async function releaseNewVersion(versionType = "patch", customMessage = "") {
   try {
     const validTypes = ["major", "minor", "patch"];
@@ -23,12 +25,17 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
         `Invalid version type specified: ${versionType}. Use major, minor, or patch.`
       );
     }
-
     await execShellCommand("npm run build");
     await execShellCommand("git add dist/");
 
+    const files = await fs.readdir(DIST_DIR);
+    const scriptFiles = files.filter((file) => file.endsWith(".js"));
+    const cssFiles = files.filter((file) => file.endsWith(".css"));
+
     const packageJsonPath = path.join(process.cwd(), "package.json");
     const packageLockJsonPath = path.join(process.cwd(), "package-lock.json");
+    const readmePath = path.join(process.cwd(), "README.md");
+    const documentationPath = path.join(process.cwd(), "docs/", "index.html");
 
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
     const versionParts = packageJson.version
@@ -63,6 +70,19 @@ async function releaseNewVersion(versionType = "patch", customMessage = "") {
         JSON.stringify(packageLockJson, null, 2)
       );
     }
+    const readmeContent = fs.readFileSync(readmePath, "utf8");
+    const updatedReadmeContent = readmeContent.replace(
+      /markup-refine-lib\.css@\d+\.\d+\.\d+/,
+      `markup-refine-lib.css@${packageJson.version}`
+    );
+    fs.writeFileSync(readmePath, updatedReadmeContent);
+
+    const documentationContent = fs.readFileSync(documentationPath, "utf8");
+    const updatedDocumentationContent = documentationContent.replace(
+      /markup-refine-lib\.css@\d+\.\d+\.\d+/g,
+      `markup-refine-lib.css@${packageJson.version}`
+    );
+    fs.writeFileSync(documentationPath, updatedDocumentationContent);
 
     const commitMessage = `
     Release ${versionType} version v${packageJson.version}

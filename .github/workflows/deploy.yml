@@ -2,8 +2,8 @@ name: Deploy new version
 
 on:
   push:
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
+    branch:
+      - "main"
 
 jobs:
   build-deploy:
@@ -21,23 +21,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build library and demo page
+      - name: Build library
         run: npm run build
 
-      - name: Create GitHub Release and Upload Artifacts
-        id: upload-release
-        uses: softprops/action-gh-release@v2.0.9
-        with:
-          files: ./dist/*
-          token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build library and demo page
-        run: npm run buildDemoPage
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - name: Run test suites
+        run: npm test
