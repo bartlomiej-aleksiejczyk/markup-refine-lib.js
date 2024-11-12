@@ -67,7 +67,7 @@
         {#if $topbarSettings.logoUri}
           <img
             class="topbar__header-logo topbar__header-logo--mobile"
-            src={$topbarSettings.homeUri}
+            src={$topbarSettings.logoUri}
             alt="Application logo"
           />
         {/if}
