@@ -25,3 +25,17 @@ Since this library uses the same css variables as markup-refine-lib.css to preve
   href="https://cdn.jsdelivr.net/gh/bartlomiej-aleksiejczyk/markup-refine-lib.js@0.3.1/dist/markupRefineLibJs.min.css"
 />
 ```
+
+## How to run locally
+
+To run a development, server use this command:
+
+```bash
+npm run dev
+```
+
+To run tests, use this command:
+
+```bash
+npm run test
+```
