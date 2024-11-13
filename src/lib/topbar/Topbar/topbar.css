@@ -1,5 +1,6 @@
 .topbar {
   display: flex;
+  position: sticky;
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--color-primary);
@@ -7,6 +8,11 @@
   align-items: center;
   height: 3.5rem;
   overflow-y: hidden;
+  top: 0;
+}
+
+.topbar--mobile {
+  position: static;
 }
 
 .topbar--centered {

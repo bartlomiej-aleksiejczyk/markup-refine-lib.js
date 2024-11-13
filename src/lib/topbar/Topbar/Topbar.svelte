@@ -13,7 +13,11 @@
   import TopbarDropdown from "../TopbarDropdown/TopbarDropdown.svelte";
 </script>
 
-<div class="topbar {$isHeadlineEnabled ? '' : 'topbar--centered'}">
+<div
+  class="topbar {$isHeadlineEnabled
+    ? ''
+    : 'topbar--centered'} {$isRegularScreenModeEnabled ? '' : 'topbar--mobile'}"
+>
   {#if $isRegularScreenModeEnabled}
     {#if $isHeadlineEnabled}
       <a href={$topbarSettings.homeUri}>
