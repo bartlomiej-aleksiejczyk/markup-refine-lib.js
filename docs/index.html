@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Markup refine lib demo</title>
+    <title>Markup Refine Library Demo</title>
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <style>
       body {
         margin: 0;
@@ -16,20 +17,84 @@
     />
   </head>
   <body>
-    <dynamic-topbar> </dynamic-topbar>
+    <dynamic-topbar></dynamic-topbar>
     <div id="app" class="responsive-container">
-      <h1>Demonstration of markup-refine-lib.js library</h1>
+      <h1>Demonstration of markup-refine-lib.js Library</h1>
       <p>
-        This page contains a demonstration of the usage of markup-refine-lib.js
-        webcomponents.
+        This page contains a demonstration of how to use the
+        markup-refine-lib.js web components.
       </p>
-      <h2>Dynamic topbar (presented above)</h2>
+      <h2>Dynamic Topbar (Presented Above)</h2>
       <p>
-        To use the dynamic topbar component add this custom element to your
-        markup. THen attach `.data` property with tpbar content via javascript.
+        To use the dynamic topbar component, add this custom element to your
+        markup:
       </p>
       <pre>
-      <code>"&lt;dynamic-topbar&gt;&lt;/dynamic-topbar&gt;"</code>
+        <code>&lt;dynamic-topbar&gt;&lt;/dynamic-topbar&gt;</code>
+      </pre>
+      <p>
+        Then attach the <code>.data</code> property with topbar content via
+        JavaScript, as shown in the code below:
+      </p>
+      <pre>
+        <code>
+&lt;script type="module"&gt;
+const sampleDate = {
+  topbarSettings: {
+    title: "Dynamic topbar demonstration",
+    logoUri:
+      "https://img.icons8.com/?size=100&amp;id=baTWeZAqG8lF&amp;format=png&amp;color=ffffff",
+    homeUri: "/markup-refine-lib.js/",
+  },
+  fixedContent: {
+    logoutUrl: "https://mysite.invalid/logout",
+    userPreferencesUrl: "https://mysite.invalid/pref",
+    userSettingsUrl: "https://mysite.invalid/sett",
+  },
+  content: [
+    {
+      link: "https://mysite.invalid/users/",
+      iconName: "Customers",
+      defaultName: "Customers",
+      id: "users",
+      type: "link",
+    },
+    {
+      defaultName: "Custom Settings",
+      type: "container",
+      id: "settings",
+      objects: [
+        {
+          link: "https://mysite.invalid/security/",
+          iconName: "shield",
+          defaultName: "Security",
+          id: "security",
+          type: "link",
+        },
+        {
+          link: "https://mysite.invalid/privacy/",
+          defaultName: "Privacy",
+          id: "privacy",
+          type: "link",
+        },
+        {
+          link: "https://mysite.invalid/privacy/",
+          defaultName: "GDPR",
+          id: "privacy",
+          type: "link",
+        },
+      ],
+    },
+  ],
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const topBar = document.querySelector("dynamic-topbar");
+  if (topBar) {
+    topBar.data = JSON.stringify(sampleDate);
+  }
+});
+&lt;/script&gt;
+        </code>
       </pre>
     </div>
     <script type="module">
