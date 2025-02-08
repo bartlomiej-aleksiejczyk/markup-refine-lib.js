@@ -44,7 +44,7 @@
                 "items": {
                   "type": "object",
                   "properties": {
-                    "link": { "type": "string", "format": "uri" },
+                    "link": { "type": "string", "format": "uri-reference" },
                     "iconName": { "type": "string" },
                     "defaultName": { "type": "string" },
                     "id": { "type": "string" },
